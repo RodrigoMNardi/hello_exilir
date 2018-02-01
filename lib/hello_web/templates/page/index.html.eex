@@ -1,36 +1,54 @@
 <div class="jumbotron">
   <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <p class="lead">A small tutorial to start working with Phoenix and Exilir</p>
 </div>
 
 <div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
+    <div class="col-lg-6">
+        Exilir is a little bit similiar to ruby, also has it own particularity.
+    </div>
 
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
-  </div>
+    <div class="col-lg-6">
+        <h3>Tips</h3>
+        <h4>TIP #1: Hash</h4>
+        <p>
+            Accessing Exilir Hash data is very similiar to Ruby Hash
+            BUT, You should pay attention for a special char " (Double quote), in ruby accesses a
+            a specifically key you can use single quote or double quote. Also, Exilir don't like this and
+            will return a nil object.
+        </p>
+        <pre>
+            x = %{
+              "search" => "Toto"
+            }
+            IO.puts x['search'] => nil
+            IO.puts x["search"] => "Toto"
+        </pre>
+
+        <h4>TIP #2: Output to console</h4>
+        <p>
+            You should address to IO.puts to print your information. Exilir why you use "puts"???
+        </p>
+
+        <h4>TIP #3: Double quote</h4>
+        Like Python, Exilir love use double quote.
+        E.G.:
+        <pre>
+            def fib_number(conn, _params) do
+                render conn, 'fib_calc.html'
+            end
+
+            Won't work reason:
+            ** (exit) an exception was raised:
+                ** (ArgumentError) argument error
+                    (stdlib) :maps.from_list('fib_calc.html')
+                    (phoenix) lib/phoenix/controller.ex:770: Phoenix.Controller.to_map/1
+
+            This snippet will work.
+            def fib_number(conn, _params) do
+                render conn, "fib_calc.html"
+            end
+        </pre>
+
+    </div>
 </div>

@@ -1,0 +1,6 @@
+<h2>My Fibonacci method</h2>
+
+<%= form_for @conn, "/fibonacci/search", [as: :search], fn f -> %>
+  <%= text_input f, :number %>
+  <%= submit "Search" %>
+<% end %>

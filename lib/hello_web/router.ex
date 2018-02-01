@@ -17,6 +17,14 @@ defmodule HelloWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/fib_method", PageController, :fib_method
+  end
+
+  scope "/fibonacci", HelloWeb do
+    pipe_through :browser
+
+    get "/number/:number", PageController, :fib_number
+    post "/search", PageController, :fib_search
   end
 
   # Other scopes may use custom stacks.

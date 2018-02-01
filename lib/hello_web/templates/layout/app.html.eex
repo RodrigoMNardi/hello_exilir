@@ -12,22 +12,34 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+    <div class="container-fluid">
+      <div class="row">
+        <header class="header">
+            <span class="logo"></span>
+        </header>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <div class="row">
+          <div class="col-sm-3 col-lg-2">
+            <nav class="navbar navbar-default navbar-fixed-side">
+              <ul>
+                <li><%= button("Fibonacci Method", to: "/fib_method", method: "get", class: "btn")%></li>
+                <li>MENU B</li>
+                <li>MENU C</li>
+              </ul>
+            </nav>
+          </div>
+          
+          <div class="col-sm-9 col-lg-10">
+            <main role="main">
+              <%= render @view_module, @view_template, assigns %>
+            </main>
+            <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+            <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
